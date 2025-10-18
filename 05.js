@@ -4,11 +4,13 @@ class Hewan {
     this.nama = nama;
     this.jenis = jenis;
   }
+
   suara() {
-    return ${this.nama} bersuara...;
+    return `${this.nama} bersuara...`;
   }
 }
 
+// Kelas turunan (subclass)
 class Kucing extends Hewan {
   constructor(nama, warna) {
     super(nama, "Kucing"); // Memanggil constructor superclass
@@ -17,8 +19,8 @@ class Kucing extends Hewan {
 }
 
 const milo = new Kucing("Milo", "Putih");
-console.log(milo.nama);  
-console.log(milo.jenis); 
+console.log(milo.nama);
+console.log(milo.jenis);
 console.log(milo.suara());
 
 class Anjing extends Hewan {
@@ -26,8 +28,10 @@ class Anjing extends Hewan {
     super(nama, "Anjing");
     this.warna = warna;
   }
+
+  // Overriding method
   suara() {
-    return ${this.nama} menggonggong: Woof woof!;
+    return `${this.nama} menggonggong: Woof woof!`;
   }
 }
 
@@ -39,6 +43,7 @@ class Serigala extends Hewan {
     super(nama, "Serigala");
     this.warna = warna;
   }
+
   suara() {
     return super.suara() + " Auuuuu~";
   }
@@ -51,8 +56,9 @@ class Burung extends Hewan {
   constructor(nama) {
     super(nama, "Burung");
   }
+
   suara() {
-    return ${this.nama} berkicau: Cip cip!;
+    return `${this.nama} berkicau: Cip cip!`;
   }
 }
 
@@ -62,4 +68,6 @@ const hewanList = [
   new Burung("Tweety")
 ];
 
-hewanList.forEach(hewan => console.log(hewan.suara()));
+hewanList.forEach(hewan =>
+  console.log(hewan.suara())
+);
