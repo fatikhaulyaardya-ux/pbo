@@ -46,11 +46,10 @@
 
     <br>
 
-    <!-- Object -->
-    <object data="data:text/plain,Ini adalah contoh object pada HTML GUI"
-            width="300"
-            height="80">
-    </object>
+  <h3>Contoh Object</h3>
+  <object data="https://www.example.com" width="300" height="200">
+    Browser Anda tidak mendukung object.
+  </object>
 
     <!-- Script -->
     <script>
@@ -60,9 +59,13 @@
         }
 
         function tampilkanFoto(event) {
-            let img = document.getElementById("foto");
-            img.src = URL.createObjectURL(event.target.files[0]);
-            img.style.display = "block";
+            const file = event.target.files[0];   // FOTO dari perangkat
+            const img = document.getElementById("foto");
+
+            if (file) {
+                img.src = URL.createObjectURL(file); // URL sementara
+                img.style.display = "block";
+            }
         }
     </script>
 
