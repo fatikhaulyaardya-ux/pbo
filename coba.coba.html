@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form GUI Sederhana</title>
+</head>
+<body>
+
+  <h1>Masukkan Nama Anda</h1>
+
+  <!-- Paragraf -->
+  <p>Silakan masukkan nama Anda pada form di bawah ini.</p>
+
+  <!-- Input -->
+  <input type="text" id="nameInput" placeholder="Nama Anda">
+  <button onclick="tampilkanNama()">Submit</button>
+
+  <h2 id="output"></h2>
+
+  <!-- Table -->
+  <h3>Contoh Tabel Data</h3>
+  <table border="1" cellpadding="5">
+    <tr>
+      <th>No</th>
+      <th>Nama</th>
+      <th>Keterangan</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Contoh</td>
+      <td>Data Dummy</td>
+    </tr>
+  </table>
+
+  <!-- Object -->
+  <h3>Contoh Object</h3>
+  <object data="https://www.example.com" width="300" height="200">
+    Browser Anda tidak mendukung object.
+  </object>
+
+  <script>
+    function tampilkanNama() {
+      let nama = document.getElementById("nameInput").value;
+      document.getElementById("output").innerText = "Halo, " + nama + "!";
+    }
+  </script>
+
+</body>
+</html>
