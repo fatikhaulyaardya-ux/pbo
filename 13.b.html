@@ -9,30 +9,15 @@
 
     <h1>Masukkan Nama Anda</h1>
 
-    <!-- Paragraf -->
     <p>Silakan masukkan nama Anda pada kolom input di bawah ini, lalu klik tombol Submit.</p>
 
-    <!-- Input Nama -->
     <input type="text" id="nameInput" placeholder="Nama Anda">
     <button onclick="tampilkanNama()">Submit</button>
 
-    <!-- Output -->
     <h2 id="output"></h2>
 
     <br>
 
-    <!-- Input Foto -->
-    <p>Pilih Foto:</p>
-    <input type="file" accept="image/*" onchange="tampilkanFoto(event)">
-
-    <br><br>
-
-    <!-- Tampilkan Foto -->
-    <img id="foto" width="200" style="display:none;">
-
-    <br><br>
-
-    <!-- Table -->
     <table border="1" cellpadding="5">
         <tr>
             <th>No</th>
@@ -46,19 +31,21 @@
 
     <br>
 
-  <h3>Contoh Object</h3>
-  <object data="https://www.example.com" width="300" height="200">
-    Browser Anda tidak mendukung object.
-  </object>
+    <h3>Contoh Object</h3>
+    <object data="https://www.example.com" width="300" height="200">
+        Browser Anda tidak mendukung object.
+    </object>
 
-    <!-- Script -->
+    <br><br>
+
+    <h3>Foto</h3>
+    <img src="foto.jpg" width="200" alt="Contoh Foto">
+
     <script>
         function tampilkanNama() {
             let nama = document.getElementById("nameInput").value;
             document.getElementById("output").innerText = "Halo, " + nama + "!";
         }
-<h3>Foto</h3>
-<img src="foto.jpg" width="200" alt="Contoh Foto">
     </script>
 
 </body>
