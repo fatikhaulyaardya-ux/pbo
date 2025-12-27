@@ -13,41 +13,49 @@
         .box {
             width: 320px;
             background: #fff;
-            padding: 20px;
+            padding: 25px;
             margin: auto;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.2);
             text-align: center;
         }
 
+        /* ===== INPUT GROUP ===== */
         .input-group {
-            position: relative;
-            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 12px;
+            padding: 6px 10px;
         }
 
         .input-group span {
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
             color: #f1c40f; /* kuning */
             font-size: 18px;
+            margin-right: 10px;
+            width: 22px;
+            text-align: center;
         }
 
         .input-group input {
+            border: none;
+            outline: none;
             width: 100%;
-            padding: 8px 8px 8px 35px;
+            font-size: 14px;
         }
 
+        /* ===== BUTTON ===== */
         button {
             width: 100%;
-            padding: 8px;
-            margin-top: 15px;
+            padding: 9px;
+            margin-top: 18px;
             background-color: #0a4d8c;
             color: white;
             border: none;
             cursor: pointer;
-            border-radius: 4px;
+            border-radius: 5px;
+            font-size: 14px;
         }
 
         button:hover {
@@ -127,4 +135,15 @@ class LoginApp {
     }
 
     logout() {
-        document.getElem
+        document.getElementById("loginBox").style.display = "block";
+        document.getElementById("userBox").style.display = "none";
+        document.getElementById("username").value = "";
+        document.getElementById("password").value = "";
+    }
+}
+
+const loginApp = new LoginApp();
+</script>
+
+</body>
+</html>
