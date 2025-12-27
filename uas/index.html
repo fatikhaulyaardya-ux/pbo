@@ -2,98 +2,100 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Login OOP</title>
+    <title>Aplikasi Login OOP</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #0b1c3d; /* biru dongker */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+            background-color: #f0f0f0;
+            padding: 40px;
         }
-
         .box {
-            background: #142850;
+            width: 320px;
+            background: #fff;
             padding: 20px;
+            margin: auto;
             border-radius: 8px;
-            width: 300px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.4);
-            color: white;
-        }
-
-        h3 {
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
             text-align: center;
         }
-
-        input {
+        input, button {
             width: 100%;
             padding: 8px;
             margin-top: 10px;
-            border: none;
-            border-radius: 4px;
-            background: white;
-            color: black;
         }
-
-        input::placeholder {
-            color: #666;
-        }
-
-        button {
-            width: 100%;
-            padding: 8px;
+        .footer {
             margin-top: 15px;
-            border: none;
-            border-radius: 4px;
-            background: white;
-            color: #0b1c3d;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #e0e0e0;
-        }
-
-        #userInfo {
-            display: none;
-            text-align: center;
+            font-size: 12px;
+            color: #666;
         }
     </style>
 </head>
 <body>
 
 <div class="box" id="loginBox">
-    <h3>Login</h3>
+    <h2>Login User</h2>
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
-    <button onclick="loginSystem.login()">Login</button>
+    <button onclick="loginApp.login()">Login</button>
+    <div class="footer">Dibuat di generator AI</div>
 </div>
 
-<div class="box" id="userInfo">
-    <h3>Selamat Datang</h3>
+<div class="box" id="userBox" style="display:none;">
+    <h2>Halaman User</h2>
     <p id="infoUser"></p>
+    <button onclick="loginApp.logout()">Logout</button>
+    <div class="footer">Dibuat di generator AI</div>
 </div>
 
 <script>
-class LoginSystem {
+class LoginApp {
     constructor() {
-        this.usersKey = "usersData";
-        this.initData();
+        this.loadData();
     }
 
-    initData() {
-        if (!localStorage.getItem(this.usersKey)) {
-            const users = [
-                { username: "admin", password: "12345" },
-                { username: "user", password: "password" }
+    loadData() {
+        if (!localStorage.getItem("dataUser")) {
+            const dataUser = [
+                { username: "admin", password: "admin123" },
+                { username: "user", password: "user123" }
             ];
-            localStorage.setItem(this.usersKey, JSON.stringify(users));
+            localStorage.setItem("dataUser", JSON.stringify(dataUser));
         }
     }
 
     login() {
-        const usernameInput = document.getElementById("username").value;
-        const passwordInput = d
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        const users = JSON.parse(localStorage.getItem("dataUser"));
+        const validUser = users.find(
+            u => u.username === username && u.password === password
+        );
+
+        if (validUser) {
+            this.showUser(validUser.username);
+        } else {
+            alert("salah login");
+        }
+    }
+
+    showUser(username) {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("userBox").style.display = "block";
+        document.getElementById("infoUser").innerText =
+            "Selamat datang, " + username;
+    }
+
+    logout() {
+        document.getElementById("loginBox").style.display = "block";
+        document.getElementById("userBox").style.display = "none";
+        document.getElementById("username").value = "";
+        document.getElementById("password").value = "";
+    }
+}
+
+const loginApp = new LoginApp();
+</script>
+
+</body>
+</html>
