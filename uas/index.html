@@ -1,1 +1,95 @@
- uas_Fatikha Ulya Ardya Pramono
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Login OOP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+        }
+        #userInfo {
+            display: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box" id="loginBox">
+    <h3>Login</h3>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="loginSystem.login()">Login</button>
+</div>
+
+<div class="box" id="userInfo">
+    <h3>Selamat Datang</h3>
+    <p id="infoUser"></p>
+</div>
+
+<script>
+class LoginSystem {
+    constructor() {
+        this.usersKey = "usersData";
+        this.initData();
+    }
+
+    // Simpan dataset JSON ke localStorage
+    initData() {
+        if (!localStorage.getItem(this.usersKey)) {
+            const users = [
+                { username: "admin", password: "12345" },
+                { username: "user", password: "password" }
+            ];
+            localStorage.setItem(this.usersKey, JSON.stringify(users));
+        }
+    }
+
+    login() {
+        const usernameInput = document.getElementById("username").value;
+        const passwordInput = document.getElementById("password").value;
+
+        const users = JSON.parse(localStorage.getItem(this.usersKey));
+
+        const userFound = users.find(
+            u => u.username === usernameInput && u.password === passwordInput
+        );
+
+        if (!userFound) {
+            alert("salah login");
+        } else {
+            this.showUserInfo(userFound);
+        }
+    }
+
+    showUserInfo(user) {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("userInfo").style.display = "block";
+        document.getElementById("infoUser").innerText =
+            "Login sebagai: " + user.username;
+    }
+}
+
+// Object dari class (OOP)
+const loginSystem = new LoginSystem();
+</script>
+
+</body>
+</html>
