@@ -6,24 +6,57 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f4f4f4;
+            background: #0b1c3d; /* biru dongker */
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            margin: 0;
         }
+
         .box {
-            background: white;
+            background: #142850;
             padding: 20px;
             border-radius: 8px;
             width: 300px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0,0,0,0.4);
+            color: white;
         }
-        input, button {
+
+        h3 {
+            text-align: center;
+        }
+
+        input {
             width: 100%;
             padding: 8px;
             margin-top: 10px;
+            border: none;
+            border-radius: 4px;
+            background: white;
+            color: black;
         }
+
+        input::placeholder {
+            color: #666;
+        }
+
+        button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 4px;
+            background: white;
+            color: #0b1c3d;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #e0e0e0;
+        }
+
         #userInfo {
             display: none;
             text-align: center;
@@ -51,7 +84,6 @@ class LoginSystem {
         this.initData();
     }
 
-    // Simpan dataset JSON ke localStorage
     initData() {
         if (!localStorage.getItem(this.usersKey)) {
             const users = [
@@ -64,32 +96,4 @@ class LoginSystem {
 
     login() {
         const usernameInput = document.getElementById("username").value;
-        const passwordInput = document.getElementById("password").value;
-
-        const users = JSON.parse(localStorage.getItem(this.usersKey));
-
-        const userFound = users.find(
-            u => u.username === usernameInput && u.password === passwordInput
-        );
-
-        if (!userFound) {
-            alert("salah login");
-        } else {
-            this.showUserInfo(userFound);
-        }
-    }
-
-    showUserInfo(user) {
-        document.getElementById("loginBox").style.display = "none";
-        document.getElementById("userInfo").style.display = "block";
-        document.getElementById("infoUser").innerText =
-            "Login sebagai: " + user.username;
-    }
-}
-
-// Object dari class (OOP)
-const loginSystem = new LoginSystem();
-</script>
-
-</body>
-</html>
+        const passwordInput = d
