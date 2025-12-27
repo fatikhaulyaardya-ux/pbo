@@ -6,23 +6,54 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #0a4d8c; /* biru laut */
             padding: 40px;
         }
+
         .box {
             width: 320px;
             background: #fff;
             padding: 20px;
             margin: auto;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
             text-align: center;
         }
-        input, button {
-            width: 100%;
-            padding: 8px;
+
+        .input-group {
+            position: relative;
             margin-top: 10px;
         }
+
+        .input-group span {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #f1c40f; /* kuning */
+            font-size: 18px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 8px 8px 8px 35px;
+        }
+
+        button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 15px;
+            background-color: #0a4d8c;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #083b6b;
+        }
+
         .footer {
             margin-top: 15px;
             font-size: 12px;
@@ -34,8 +65,17 @@
 
 <div class="box" id="loginBox">
     <h2>Login User</h2>
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
+
+    <div class="input-group">
+        <span>👤</span>
+        <input type="text" id="username" placeholder="Username">
+    </div>
+
+    <div class="input-group">
+        <span>🔒</span>
+        <input type="password" id="password" placeholder="Password">
+    </div>
+
     <button onclick="loginApp.login()">Login</button>
     <div class="footer">Dibuat di generator AI</div>
 </div>
@@ -87,15 +127,4 @@ class LoginApp {
     }
 
     logout() {
-        document.getElementById("loginBox").style.display = "block";
-        document.getElementById("userBox").style.display = "none";
-        document.getElementById("username").value = "";
-        document.getElementById("password").value = "";
-    }
-}
-
-const loginApp = new LoginApp();
-</script>
-
-</body>
-</html>
+        document.getElem
