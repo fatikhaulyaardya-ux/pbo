@@ -45,7 +45,7 @@
             font-size: 14px;
         }
 
-        /* ===== BUTTON ===== */
+        /* ===== BUTTON LOGIN ===== */
         button {
             width: 100%;
             padding: 9px;
@@ -62,6 +62,19 @@
             background-color: #083b6b;
         }
 
+        /* ===== BUTTON LOGOUT ===== */
+        .logout-btn {
+            background-color: #e74c3c;
+        }
+
+        .logout-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .logout-btn span {
+            margin-right: 6px;
+        }
+
         .footer {
             margin-top: 15px;
             font-size: 12px;
@@ -71,6 +84,7 @@
 </head>
 <body>
 
+<!-- ===== LOGIN ===== -->
 <div class="box" id="loginBox">
     <h2>Login User</h2>
 
@@ -88,10 +102,15 @@
     <div class="footer">Dibuat di generator AI</div>
 </div>
 
+<!-- ===== USER PAGE ===== -->
 <div class="box" id="userBox" style="display:none;">
     <h2>Halaman User</h2>
     <p id="infoUser"></p>
-    <button onclick="loginApp.logout()">Logout</button>
+
+    <button class="logout-btn" onclick="loginApp.logout()">
+        <span>🚪</span> Logout
+    </button>
+
     <div class="footer">Dibuat di generator AI</div>
 </div>
 
